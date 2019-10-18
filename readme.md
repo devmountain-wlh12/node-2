@@ -13,6 +13,25 @@
   * We invoke _express.json()_ as an argument of _app.use()_ to use it as Top-Level-Middleware: `app.use(express.json())`
   * NOTE: make sure all Top-Level-Middleware is placed above the endopints in your code. Otherwise it won't run in the correct order.
 
+## Controllers
+
+To organize our code a little better, endpoint handlers are created in files called controllers as methods on a single exported object.
+
+```javascript
+// *** CONTROLLER FILE *** //
+
+module.exports = {
+  methodName: (req, res, next) => {
+    // some logic to be run
+    res.status(200).send('some data')
+  },
+  anotherMethod: (req, res, next) => {
+    // some logic to be run
+    res.status(200).send('some data')
+  }
+}
+```
+
 ## Postman
 
 The browser only allows us to make `get` requests to an api. If we want to make `post`, `put`, or `delete` requests, we need to use axios in our code or some other tool.
